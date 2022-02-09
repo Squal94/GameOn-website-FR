@@ -14,6 +14,7 @@ const formData = document.querySelectorAll(".formData");
 const btnClose = document.querySelectorAll(".close"); // ajout du lien vers la class "close" pour la fermeture du formulaire
 const inputFirstName = document.querySelector("#first"); 
 const inputLastName = document.querySelector("#last"); 
+const inputEmail = document.querySelector("#email"); 
 
 
 // launch modal event
@@ -45,16 +46,11 @@ function smallColorGreen (input) {
   let small = input.nextElementSibling;
   small.style.fontSize = '0.5em';
   small.style.color = 'green';
-  small.innerHTML = 'Champ Valide .';
+  small.innerHTML = 'Champ Valide';
 }
 
 // Fonction condition pour l'affichage des sous texte .
-
-
 //Question je ne peux pas crée des fonctions pour les if else parce qu'il y a deja des argument a placer pour les fonctions smallColor ?
-
-
-
 
 
 // Vérification et validation des champs du formulaire .
@@ -71,16 +67,15 @@ const validString = function() {
     '^[a-zA-Z0-9-]{2,99}$', 'g'
   );
 
-  // test de la valeur de notre input
-  let stringValid = firstRegExp.test(inputFirstName.value);
- 
-
-  // condition pour l'affichage d'un test si les valeurs retrées son erroné
-  if (stringValid){
-    smallColorGreen(inputFirstName) ;
-  } else {
-    smallColorRed(inputFirstName, 'Veuillez entrer 2 caractères ou plus pour le champ du nom !') ;
-  }
+    // test de la valeur de notre input
+    let stringValid = firstRegExp.test(inputFirstName.value);
+  
+    // condition pour l'affichage d'un test si les valeurs retrées son erroné
+    if (stringValid){
+      smallColorGreen(inputFirstName) ;
+    } else {
+      smallColorRed(inputFirstName, 'Veuillez entrer 2 caractères ou plus pour le champ du nom !') ;
+    }
 };
 
 
@@ -91,22 +86,40 @@ inputLastName.addEventListener('change', function () {
 });
 
 const validString2 = function() {
-  // Reg Exp validation d'un texte .
   let firstRegExp = new RegExp(
     '^[a-zA-Z0-9-]{2,99}$', 'g'
   );
-
-  // test de la valeur de notre input
-  let stringValid2 = firstRegExp.test(inputLastName.value);
- 
-
-  // condition pour l'affichage d'un test si les valeurs retrées son erroné
-  if (stringValid2){
-    smallColorGreen(inputLastName) ;
-  } else {
-    smallColorRed(inputLastName, 'Veuillez entrer 2 caractères ou plus pour le champ du nom !') ;
-  }
+    let stringValid2 = firstRegExp.test(inputLastName.value);
+  
+    if (stringValid2){
+      smallColorGreen(inputLastName) ;
+    } else {
+      smallColorRed(inputLastName, 'Veuillez entrer 2 caractères ou plus pour le champ du nom !') ;
+    }
 };
+
+// input Email
+
+
+inputEmail.addEventListener('change', function () {
+  validEmail(this);
+});
+
+const validEmail = function() {
+  let emailRegExp = new RegExp(
+    '^[a-zA-Z0-9.-_]{2,99}[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g'
+  );
+    let emailValid = emailRegExp.test(inputEmail.value);
+  
+    if (emailValid){
+      smallColorGreen(inputEmail) ;
+    } else {
+      smallColorRed(inputEmail, 'Veuillez entrer une adresse email valide (xyz@exemple.com) !') ;
+    }
+};
+
+
+
 
 
 
