@@ -13,6 +13,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const btnClose = document.querySelectorAll(".close"); // ajout du lien vers la class "close" pour la fermeture du formulaire
 
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -28,6 +29,8 @@ btnClose.forEach((btn) => btn.addEventListener("click", closeModal));
 function closeModal() {
   modalbg.style.display = "none";
 }
+
+// Vérification et validation des champs du formulaire .
 
 
 
