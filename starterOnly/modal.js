@@ -13,6 +13,8 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const btnClose = document.querySelectorAll(".close"); // ajout du lien vers la class "close" pour la fermeture du formulaire
 const inputFirstName = document.querySelector("#first"); 
+const inputLastName = document.querySelector("#last"); 
+
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -22,24 +24,48 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-//Close formulaire on click 
+// Close formulaire on click 
 btnClose.forEach((btn) => btn.addEventListener("click", closeModal));
 
-// launch modal form
+// Close modal form
 function closeModal() {
   modalbg.style.display = "none";
 }
 
+// fonction pour l'affichage des champs valid ou non .
+
+function smallColorRed (input ,string) {
+  let small = input.nextElementSibling;
+  small.style.fontSize = '0.5em';
+  small.style.color = 'red';
+  small.innerHTML = string ;
+}
+
+function smallColorGreen (input) {
+  let small = input.nextElementSibling;
+  small.style.fontSize = '0.5em';
+  small.style.color = 'green';
+  small.innerHTML = 'Champ Valide .';
+}
+
+// Fonction condition pour l'affichage des sous texte .
+
+
+//Question je ne peux pas crée des fonctions pour les if else parce qu'il y a deja des argument a placer pour les fonctions smallColor ?
+
+
+
+
 
 // Vérification et validation des champs du formulaire .
 
-// Input firstname .
+// Input firstName et lastName .
 
 inputFirstName.addEventListener('change', function () {
   validString(this);
 });
 
-const validString = function(input) {
+const validString = function() {
   // Reg Exp validation d'un texte .
   let firstRegExp = new RegExp(
     '^[a-zA-Z0-9-]{2,99}$', 'g'
@@ -47,19 +73,44 @@ const validString = function(input) {
 
   // test de la valeur de notre input
   let stringValid = firstRegExp.test(inputFirstName.value);
-  let small = inputFirstName.nextElementSibling;
+ 
 
   // condition pour l'affichage d'un test si les valeurs retrées son erroné
   if (stringValid){
-    small.style.color = 'green';
-    small.style.fontSize = '0.5em';
-    small.innerHTML = 'Champ Valide.';
+    smallColorGreen(inputFirstName) ;
   } else {
-    small.style.color = 'red';
-    small.style.fontSize = '0.5em';
-    small.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ du nom !';
+    smallColorRed(inputFirstName, 'Veuillez entrer 2 caractères ou plus pour le champ du nom !') ;
   }
 };
+
+
+// input Last name
+
+inputLastName.addEventListener('change', function () {
+  validString2(this);
+});
+
+const validString2 = function() {
+  // Reg Exp validation d'un texte .
+  let firstRegExp = new RegExp(
+    '^[a-zA-Z0-9-]{2,99}$', 'g'
+  );
+
+  // test de la valeur de notre input
+  let stringValid2 = firstRegExp.test(inputLastName.value);
+ 
+
+  // condition pour l'affichage d'un test si les valeurs retrées son erroné
+  if (stringValid2){
+    smallColorGreen(inputLastName) ;
+  } else {
+    smallColorRed(inputLastName, 'Veuillez entrer 2 caractères ou plus pour le champ du nom !') ;
+  }
+};
+
+
+
+
 
 
 
