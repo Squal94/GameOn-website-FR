@@ -15,6 +15,9 @@ const btnClose = document.querySelectorAll(".close"); // ajout du lien vers la c
 const inputFirstName = document.querySelector("#first"); 
 const inputLastName = document.querySelector("#last"); 
 const inputEmail = document.querySelector("#email"); 
+const inputBirthdate = document.querySelector("#birthdate"); 
+
+
 
 
 // launch modal event
@@ -118,6 +121,27 @@ const validEmail = function() {
     }
 };
 
+// input Date de naissance 
+
+inputBirthdate.addEventListener('change', function () {
+  validDate(this);
+});
+
+const validDate = function() {
+  let dateRegExp = new RegExp(
+    '^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|'
+    //'^(0?\d|[12]\d|3[01])[/]{1}(0?\d|1[012])[/]{1}((?:1900|2022)\d{4})$'
+   // '^[0-9]{2}[/]{1}[0-9]{2}[/]{1}[0-9]{4}$', 'g'
+    // ^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$
+  );
+    let dateValid = dateRegExp.test(inputBirthdate.value);
+  
+    if (dateValid){
+      smallColorGreen(inputBirthdate) ;
+    } else {
+      smallColorRed(inputBirthdate, 'Veuillez entrer une date de naissance valide (jj/mm/aaaa) !') ;
+    }
+};
 
 
 
@@ -129,10 +153,3 @@ const validEmail = function() {
 
 
 
-
-
-
-/* email regexp .
-let emailRegExp = new RegExp(
-  '^[a-zA-Z0-9.-_]{2,99}[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g'
-); */
