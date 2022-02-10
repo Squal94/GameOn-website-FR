@@ -17,7 +17,8 @@ const inputLastName = document.querySelector("#last");
 const inputEmail = document.querySelector("#email"); 
 const inputBirthdate = document.querySelector("#birthdate"); 
 const inputQuantity = document.querySelector("#quantity"); 
-const inputLocation = document.querySelector(".checked"); 
+const inputLocation = document.querySelector(".checked2"); 
+const inputObligatoire = document.querySelector("#checkbox1");
 
 
 
@@ -182,13 +183,30 @@ const validLocalisation = function () {
   const local5 = document.querySelector('#location5').checked;
   const local6 = document.querySelector('#location6').checked;
 
-  if (local1 == false && local2 == false && local3 == false && local4 == false && local5 == false && local6 == false) {
-    smallColorRed(inputLocation, 'Veuillez cocher au moin une destination !') ;
+  if (local1 == false && local2 == false && local3 == false && local4 == false && local5 == false && local6 == false) { // Ici on lui indique que si toutes les valeurs sont fausses alors on entre le texte suivant .
+    smallColorRed(inputLocation, 'Veuillez cocher au moin un concour !') ;
   } else {
     smallColorGreen(inputLocation);
   };
 
 };
+
+/*
+// input lu et accepter 
+
+inputObligatoire.addEventListener('click' , function (){
+  validObligatoire(this);
+});
+
+const validObligatoire = function () {
+  if (inputObligatoire){
+    smallColorGreen(inputObligatoire);
+  } else {
+    smallColorRed(inputObligatoire, 'Ce champ est requis !') ;
+  }
+}
+*/
+
 
 
 
