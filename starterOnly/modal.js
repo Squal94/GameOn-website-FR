@@ -17,6 +17,7 @@ const inputLastName = document.querySelector("#last");
 const inputEmail = document.querySelector("#email"); 
 const inputBirthdate = document.querySelector("#birthdate"); 
 const inputQuantity = document.querySelector("#quantity"); 
+const inputLocation = document.querySelector(".checked"); 
 
 
 
@@ -164,6 +165,30 @@ const  validQuantity = function() {
     }
 };
 
+
+// input checked box selection
+
+
+inputLocation.addEventListener('change', function () {
+  validLocalisation(this);
+});
+
+const validLocalisation = function () {
+
+  const local1 = document.querySelector('#location1').checked;
+  const local2 = document.querySelector('#location2').checked;
+  const local3 = document.querySelector('#location3').checked;
+  const local4 = document.querySelector('#location4').checked;
+  const local5 = document.querySelector('#location5').checked;
+  const local6 = document.querySelector('#location6').checked;
+
+  if (local1 == false && local2 == false && local3 == false && local4 == false && local5 == false && local6 == false) {
+    smallColorRed(inputLocation, 'Veuillez cocher au moin une destination !') ;
+  } else {
+    smallColorGreen(inputLocation);
+  };
+
+};
 
 
 
