@@ -17,8 +17,11 @@ const inputLastName = document.querySelector("#last");
 const inputEmail = document.querySelector("#email"); 
 const inputBirthdate = document.querySelector("#birthdate"); 
 const inputQuantity = document.querySelector("#quantity"); 
-const inputLocation = document.querySelector(".checked2"); 
+const inputLocalisation = document.querySelector(".checked2"); 
 const inputObligatoire = document.querySelector("#checkbox1");
+const CheckValidation = document.querySelector(".checkbox2-label");
+
+
 
 
 
@@ -52,7 +55,7 @@ function smallColorGreen (input) {
   let small = input.nextElementSibling;
   small.style.fontSize = '0.5em';
   small.style.color = 'green';
-  small.innerHTML = 'Champ Valide';
+  small.innerHTML = '';
 }
 
 // Fonction condition pour l'affichage des sous texte .
@@ -80,7 +83,7 @@ const validString = function() {
     if (stringValid){
       smallColorGreen(inputFirstName) ;
     } else {
-      smallColorRed(inputFirstName, 'Veuillez entrer 2 caractères ou plus pour le champ du nom !') ;
+      smallColorRed(inputFirstName, 'Veuillez entrer 2 caractères ou plus pour le champ du prénom !') ;
     }
 };
 
@@ -170,7 +173,7 @@ const  validQuantity = function() {
 // input checked box selection
 
 
-inputLocation.addEventListener('change', function () {
+inputLocalisation.addEventListener('change', function () {
   validLocalisation(this);
 });
 
@@ -184,28 +187,25 @@ const validLocalisation = function () {
   const local6 = document.querySelector('#location6').checked;
 
   if (local1 == false && local2 == false && local3 == false && local4 == false && local5 == false && local6 == false) { // Ici on lui indique que si toutes les valeurs sont fausses alors on entre le texte suivant .
-    smallColorRed(inputLocation, 'Veuillez cocher au moin un concour !') ;
+    smallColorRed(inputLocalisation, 'Veuillez cocher au moin un concour !') ;
   } else {
-    smallColorGreen(inputLocation);
+    smallColorGreen(inputLocalisation);
   };
 
 };
 
-/*
+
 // input lu et accepter 
 
-inputObligatoire.addEventListener('click' , function (){
-  validObligatoire(this);
+inputObligatoire.addEventListener('change' , function (){
+  if (inputObligatoire == false){
+    smallColorGreen(CheckValidation);
+  } else {
+    smallColorRed(CheckValidation , 'Ce champ est requis !') ;
+  }
 });
 
-const validObligatoire = function () {
-  if (inputObligatoire){
-    smallColorGreen(inputObligatoire);
-  } else {
-    smallColorRed(inputObligatoire, 'Ce champ est requis !') ;
-  }
-}
-*/
+  
 
 
 
