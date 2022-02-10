@@ -16,6 +16,7 @@ const inputFirstName = document.querySelector("#first");
 const inputLastName = document.querySelector("#last"); 
 const inputEmail = document.querySelector("#email"); 
 const inputBirthdate = document.querySelector("#birthdate"); 
+const inputQuantity = document.querySelector("#quantity"); 
 
 
 
@@ -129,7 +130,7 @@ inputBirthdate.addEventListener('change', function () {
 
 const validDate = function() {
   let dateRegExp = new RegExp(
-    '^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|'
+    '^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|', 'g'
     //'^(0?\d|[12]\d|3[01])[/]{1}(0?\d|1[012])[/]{1}((?:1900|2022)\d{4})$'
    // '^[0-9]{2}[/]{1}[0-9]{2}[/]{1}[0-9]{4}$', 'g'
     // ^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$
@@ -140,6 +141,26 @@ const validDate = function() {
       smallColorGreen(inputBirthdate) ;
     } else {
       smallColorRed(inputBirthdate, 'Veuillez entrer une date de naissance valide (jj/mm/aaaa) !') ;
+    }
+};
+
+
+// input Nombre de concour 
+
+inputQuantity.addEventListener('change', function () {
+  validQuantity(this);
+});
+
+const  validQuantity = function() {
+  let quantityRegExp = new RegExp(
+    '^[0-9]{1,2}$', 'g'
+  );
+    let quantityValid = quantityRegExp.test(inputQuantity.value);
+  
+    if (quantityValid){
+      smallColorGreen(inputQuantity) ;
+    } else {
+      smallColorRed(inputQuantity, 'Veuillez entrer une valeur numérique, le zéro est accepter !') ;
     }
 };
 
