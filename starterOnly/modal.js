@@ -213,9 +213,13 @@ function smallColorGreen (input) {
 
 
     // input lu et accepter 
+    
+    inputObligatoire.addEventListener('change' , function (){
+      
+      let validObligatoire = inputObligatoire.checked;
+      console.log(validObligatoire)
 
-    inputObligatoire.addEventListener('input' , function (){
-      if (inputObligatoire == true){
+      if (validObligatoire){
         smallColorGreen(CheckValidation);
         formValide = true ;
       } else {
