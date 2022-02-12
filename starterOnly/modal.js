@@ -20,13 +20,7 @@ const inputQuantity = document.querySelector("#quantity");
 const inputLocalisation = document.querySelector(".checked2"); 
 const inputObligatoire = document.querySelector("#checkbox1");
 const CheckValidation = document.querySelector(".checkbox2-label");
-
-let formValide = true // Création de mon booléen pour confirmer ou refuser l'envoi du formulaire 
-
-
-
-
-
+const reserve = document.querySelector("#reserve");
 
 
 // launch modal event
@@ -58,141 +52,116 @@ function smallColorGreen (input) {
   let small = input.nextElementSibling;
   small.style.fontSize = '0.5em';
   small.style.color = 'green';
-  small.innerHTML = '';
+  small.innerHTML = 'Valid';
 }
 
-// Fonction condition pour l'affichage des sous texte .
-//Question je ne peux pas crée des fonctions pour les if else parce qu'il y a deja des argument a placer pour les fonctions smallColor ?
+ // Input firstName  .
 
+  inputFirstName.addEventListener('change',function () {
+    validString();
+    
+  });
 
-// Vérification et validation des champs du formulaire .
-
-// Input firstName  .
-
-    inputFirstName.addEventListener('change', function () {
-      validString(this);
-    });
-
-    const validString = function() {
-      // Reg Exp validation d'un texte .
-      let firstRegExp = new RegExp(
-        '^[a-zA-Z0-9-]{2,99}$', 'g'
-      );
-
+    function validString () {
         // test de la valeur de notre input
+        let firstRegExp = new RegExp('^[a-zA-Z0-9-]{2,99}$', 'g');
         let stringValid = firstRegExp.test(inputFirstName.value);
-      
         // condition pour l'affichage d'un test si les valeurs retrées son erroné
-        if (stringValid){
-          smallColorGreen(inputFirstName) ;
-          formValide = true ;
-        } else {
+        if (!stringValid){
           smallColorRed(inputFirstName, 'Veuillez entrer 2 caractères ou plus pour le champ du prénom !') ;
-          formValide = false ;
+          return false ;
+        } else {
+          smallColorGreen(inputFirstName) ;
+          return true ;
         }
     };
 
+// input lastName
 
-    // input lastName
+  inputLastName.addEventListener('change', function () {
+    validString2();
+  });
 
-    inputLastName.addEventListener('change', function () {
-      validString2(this);
-    });
-
-    const validString2 = function() {
-      let firstRegExp = new RegExp(
-        '^[a-zA-Z0-9-]{2,99}$', 'g'
-      );
+    function validString2 () {
+        let firstRegExp = new RegExp('^[a-zA-Z0-9-]{2,99}$', 'g');
         let stringValid2 = firstRegExp.test(inputLastName.value);
-      
-        if (stringValid2){
-          smallColorGreen(inputLastName) ;
-          formValide = true ;
-        } else {
+              
+        if (!stringValid2){
           smallColorRed(inputLastName, 'Veuillez entrer 2 caractères ou plus pour le champ du nom !') ;
-          formValide = false ;
-        }
+          return false ;
+        } else {
+          smallColorGreen(inputLastName) ;
+          return true ;
+        };
+        
     };
+// input Email
 
-    // input Email
-
-
-    inputEmail.addEventListener('change', function () {
-      validEmail(this);
-    });
-
-    const validEmail = function() {
-      let emailRegExp = new RegExp(
-        '^[a-zA-Z0-9.-_]{2,99}[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g'
-      );
+  inputEmail.addEventListener('change', function () {
+    validEmail();
+  });
+        
+    function validEmail () {
+        let emailRegExp = new RegExp('^[a-zA-Z0-9.-_]{2,99}[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
         let emailValid = emailRegExp.test(inputEmail.value);
-      
-        if (emailValid){
-          smallColorGreen(inputEmail) ;
-          formValide = true ;
+              
+        if (!emailValid ){
+          smallColorRed(inputEmail,'Veuillez entrer une adresse email valide (xyz@exemple.com)!') ; 
+          return false ;
         } else {
-          smallColorRed(inputEmail, 'Veuillez entrer une adresse email valide (xyz@exemple.com) !') ;
-          formValide = false ;
+          smallColorGreen (inputEmail);
+          return true ;
         }
     };
+      
+// input Date de naissance 
 
-    // input Date de naissance 
+  inputBirthdate.addEventListener('change', function () {
+    validDate();
+  });
 
-    inputBirthdate.addEventListener('change', function () {
-      validDate(this);
-    });
-
-    const validDate = function() {
-      let dateRegExp = new RegExp(
-      //'^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|', 'g'
-      //'^((?:1900-2022)\d{4})[/]{1}(0?\d|1[12])[/]{1}(0?\d|[12]\d|3[01])$'
-      //'^[0-9]{2}[/]{1}[0-9]{2}[/]{1}[0-9]{4}$', 'g'
-      //'^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}'
-      '^[0-9]{4}[/-]{1}[0-9]{2}[/-]{1}[0-9]{2}$'
-      //'^[0-9]{8}$'
-      );
+    function validDate () {
+        let dateRegExp = new RegExp('^[0-9]{4}[/-]{1}[0-9]{2}[/-]{1}[0-9]{2}$');
         let dateValid = dateRegExp.test(inputBirthdate.value);
-      
-        if (dateValid){
-          smallColorGreen(inputBirthdate) ;
-          formValide = true ;
-        } else {
+              
+        if (!dateValid){
           smallColorRed(inputBirthdate, 'Veuillez entrer une date de naissance valide (jj/mm/aaaa) !') ;
-          formValide = false ;
-        }
-    };
-
-
-    // input Nombre de concour 
-
-    inputQuantity.addEventListener('change', function () {
-      validQuantity(this);
-    });
-
-    const  validQuantity = function() {
-      let quantityRegExp = new RegExp(
-        '^[0-9]{1,2}$', 'g'
-      );
-        let quantityValid = quantityRegExp.test(inputQuantity.value);
-      
-        if (quantityValid){
-          smallColorGreen(inputQuantity) ;
-          formValide = true ;
+          return false ;
         } else {
-          smallColorRed(inputQuantity, 'Veuillez entrer une valeur numérique, le zéro est accepter !') ;
-          formValide = false ;
+          smallColorGreen(inputBirthdate) ;
+          return true ;
         }
     };
 
 
-    // input checked box selection
+// input Nombre de concour 
+
+  inputQuantity.addEventListener('change', function () {
+    validQuantity();
+  });
+
+    function validQuantity () {
+        let quantityRegExp = new RegExp('^[0-9]{1,2}$', 'g');
+        let quantityValid = quantityRegExp.test(inputQuantity.value);
+              
+        if (!quantityValid){
+          smallColorRed(inputQuantity, 'Veuillez entrer une valeur numérique entre zéro - 99 !') ;
+          return false ;
+        } else {
+          smallColorGreen(inputQuantity) ;
+          return true ; 
+        }
+    };
 
 
-    inputLocalisation.addEventListener('change', function () {
-      validLocalisation(this);
-    });
+// input checked box selection
 
-    const validLocalisation = function () {
+
+  inputLocalisation.addEventListener('change', function () {
+    validLocalisation();
+  });
+
+    function validLocalisation () {
 
       const local1 = document.querySelector('#location1').checked;
       const local2 = document.querySelector('#location2').checked;
@@ -201,41 +170,72 @@ function smallColorGreen (input) {
       const local5 = document.querySelector('#location5').checked;
       const local6 = document.querySelector('#location6').checked;
 
-      if (local1 == false && local2 == false && local3 == false && local4 == false && local5 == false && local6 == false) { // Ici on lui indique que si toutes les valeurs sont fausses alors on entre le texte suivant .
+      if (!local1 && !local2 && !local3 && !local4 && !local5 && !local6 ) { // Ici on lui indique que si toutes les valeurs sont fausses alors on entre le texte suivant .
         smallColorRed(inputLocalisation, 'Veuillez cocher au moin un concour !') ;
-        formValide = false ;
+        return false ;
       } else {
         smallColorGreen(inputLocalisation);
-        formValide = true ;
-      };
-
+        return true ;
+      }
     };
 
 
-    // input lu et accepter 
-    
-    inputObligatoire.addEventListener('change' , function (){
-      
-      let validObligatoire = inputObligatoire.checked;
-      console.log(validObligatoire)
+// input lu et accepter 
+        
+  inputObligatoire.addEventListener('change' , function () {
+    validLu();
+  });
 
-      if (validObligatoire){
-        smallColorGreen(CheckValidation);
-        formValide = true ;
+  function validLu () {
+
+    let validObligatoire = inputObligatoire.checked;
+
+    if (validObligatoire){
+      smallColorGreen(CheckValidation);
+      return true ;
+    } else {
+      smallColorRed(CheckValidation , 'Ce champ est requis !') ;
+      return false ;
+    }
+  };
+
+
+        
+reserve.addEventListener("submit" , validate);
+
+    function validate(e) {
+    if( validString(inputFirstName) && validString2(inputLastName) && validEmail(inputEmail) && validDate(inputBirthdate) && validQuantity(inputQuantity) && validLocalisation(inputLocalisation) && validLu(inputObligatoire)) {
+        reserve.submit();
+        alert("Votre formulaire a bien été envoyé");
       } else {
-        smallColorRed(CheckValidation , 'Ce champ est requis !') ;
-        formValide = false ;
+         alert("Vous devez remplir tous les champs");
+        e.preventDefault();
       }
-    });
-      
+    };
+
+
+  
 
 
 
+/*
 
+  inputEmail.addEventListener('change', function () {
+    validEmail();
+  });
 
+  const validEmail = function() {
+    let emailRegExp = new RegExp(
+      '^[a-zA-Z0-9.-_]{2,99}[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g'
+    );
+      let emailValid = emailRegExp.test(inputEmail.value);
+    
+      if (!emailValid ){
+        smallColorRed(inputEmail, 'Veuillez entrer une adresse email valide (xyz@exemple.com) !') ; 
+      } else {
+        smallColorGreen (inputEmail);
+      }
+      return emailValid;
+  };
 
-
-
-
-
-
+*/
