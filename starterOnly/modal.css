@@ -473,6 +473,56 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+
+#modal{
+  display: none;
+  z-index: 5;
+}
+
+.mondal__felicitaion{
+  background: rgba(201, 201, 201, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  top: 0;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+}
+
+.mondal__felicitaion--style{
+  background-color: #232323;
+  border-radius: 20px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  max-width: calc(100vw - 20px);
+  max-height: calc(100vh - 20px);
+  padding: 50px;
+  width: 500px;
+}
+
+.mondal__felicitaion--titre{
+  color: rgb(241, 228, 153);
+}
+
+.mondal__felicitaion--texte{
+  color: white;
+}
+
+.mondal__felicitaion--ok {
+  border: 2px solid rgb(241, 228, 153);
+  color: rgb(241, 228, 153);
+  background-color: #232323;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 20px;
+  padding: 5px 20px;
+}
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
