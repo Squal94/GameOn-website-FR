@@ -503,6 +503,7 @@ input[data-error]::after {
   max-height: calc(100vh - 20px);
   padding: 50px;
   width: 500px;
+  animation: transition-general 0.3s ease-in-out both;
 }
 
 .mondal__felicitaion--titre{
@@ -528,6 +529,8 @@ small{
   font-size: 0.55em;
   color: red;
 }
+
+
 
 footer {
   padding-left: 2vw;
@@ -582,4 +585,15 @@ footer {
     opacity: 1;
   }
 }
+
+@keyframes transition-general {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
 
