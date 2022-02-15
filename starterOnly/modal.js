@@ -49,14 +49,11 @@ function closeModalFelicitation (){
 
 function smallColorRed (input ,string) {
   let small = input.nextElementSibling;
-  small.style.fontSize = '0.5em';
-  small.style.color = 'red';
   small.innerHTML = string ;
 }
 
 function smallColorGreen (input) {
   let small = input.nextElementSibling;
-  small.style.fontSize = '0.5em';
   small.style.color = 'green';
   small.innerHTML = '';
 }
