@@ -202,7 +202,7 @@ function validLocalisation() {
 
   if (!local1 && !local2 && !local3 && !local4 && !local5 && !local6) {
     // Ici on lui indique que si toutes les valeurs sont fausses alors on entre le texte suivant .
-    smallColorRed(inputLocalisation, "Veuillez cocher au moin un concour !");
+    smallColorRed(inputLocalisation, "Veuillez cocher au moins un concours !");
     return false;
   } else {
     smallColorGreen(inputLocalisation);
@@ -243,7 +243,6 @@ function validate(e) {
     e.preventDefault();
     launchModalFelicitaion();
   } else {
-    alert("Vous devez remplir tous les champs");
     e.preventDefault();
   }
 }
