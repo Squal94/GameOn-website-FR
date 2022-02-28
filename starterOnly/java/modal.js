@@ -80,15 +80,15 @@ function send() {
 // Input firstName  .
 
 inputFirstName.addEventListener("change", function () {
-  validString();
+  validStringInputFirstName();
 });
 
-function validString() {
+function validStringInputFirstName() {
   // test de la valeur de notre input
   let firstRegExp = new RegExp("^[a-zA-Z0-9-]{2,99}$", "g");
-  let stringValid = firstRegExp.test(inputFirstName.value);
+  let stringValidFirst = firstRegExp.test(inputFirstName.value);
   // condition pour l'affichage d'un test si les valeurs retrées son erroné
-  if (!stringValid) {
+  if (!stringValidFirst) {
     smallColorRed(
       inputFirstName,
       "Veuillez entrer 2 caractères ou plus pour le champ du prénom !"
@@ -103,14 +103,14 @@ function validString() {
 // input lastName
 
 inputLastName.addEventListener("change", function () {
-  validString2();
+  validStringInputLastName();
 });
 
-function validString2() {
+function validStringInputLastName() {
   let firstRegExp = new RegExp("^[a-zA-Z0-9-]{2,99}$", "g");
-  let stringValid2 = firstRegExp.test(inputLastName.value);
+  let stringValidLast = firstRegExp.test(inputLastName.value);
 
-  if (!stringValid2) {
+  if (!stringValidLast) {
     smallColorRed(
       inputLastName,
       "Veuillez entrer 2 caractères ou plus pour le champ du nom !"
@@ -236,8 +236,8 @@ btnSubmit.addEventListener("click", validate);
 
 function validate(e) {
   if (
-    validString(inputFirstName) &&
-    validString2(inputLastName) &&
+    validStringInputFirstName(inputFirstName) &&
+    validStringInputLastName(inputLastName) &&
     validEmail(inputEmail) &&
     validDate(inputBirthdate) &&
     validQuantity(inputQuantity) &&
