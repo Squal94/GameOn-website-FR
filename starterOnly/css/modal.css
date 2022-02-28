@@ -495,36 +495,38 @@ input[data-error]::after {
 }
 
 .mondal__felicitaion--style {
-  background-color: #232323;
-  border-radius: 20px;
+  margin: 5% auto;
+  width: 100%;
+  min-height: 700px;
+  max-width: 450px;
+  background: #232323;
+  border-radius: 10px;
+  position: relative;
+  color: #fff;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  max-width: calc(100vw - 20px);
-  max-height: calc(100vh - 20px);
-  padding: 50px;
-  width: 500px;
   animation: transition-general 0.3s ease-in-out both;
 }
 
-.mondal__felicitaion--titre {
-  color: rgb(241, 228, 153);
-}
-
 .mondal__felicitaion--texte {
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: 400;
   color: white;
 }
 
 .mondal__felicitaion--ok {
-  border: 2px solid rgb(241, 228, 153);
-  color: rgb(241, 228, 153);
-  background-color: #232323;
+  color: white;
+  cursor: pointer;
+  background-color: #fe142f;
   border-radius: 5px;
+  border: none;
+  bottom: 30px;
   font-size: 14px;
-  font-weight: 700;
-  margin-top: 20px;
-  padding: 5px 20px;
+  padding: 15px 35px;
+  position: absolute;
 }
 
 small {

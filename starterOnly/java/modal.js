@@ -43,6 +43,7 @@ function closeModal() {
 
 function closeModalFelicitation() {
   modalFelicitaion.style.display = "none";
+  send();
 }
 
 // fonction pour l'affichage des champs valid ou non .
@@ -64,6 +65,9 @@ function smallColorGreen(input) {
 function launchModalFelicitaion() {
   closeModal();
   modalFelicitaion.style.display = "block";
+  btnClose.forEach((btn) =>
+    btn.addEventListener("click", closeModalFelicitation)
+  );
   btnCloseFelicitation.addEventListener("click", send);
 }
 
